@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "Hello World!"
+    return "XGBoost prediction API with App Runner and flask."
 
 @app.route("/api/v1/hello")
 def hello():
