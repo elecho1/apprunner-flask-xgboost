@@ -18,6 +18,13 @@ $ curl http://localhost:5000/api/v1/predict -X POST -H 'Content-Type:application
 {"Content-Type":"application/json","pred":[1.7686777114868164],"success":true}
 ```
 
+```
+$ curl http://localhost:5000/api/v1/predict -X POST -H 'Content-Type:application/json' -d '{"feature":[[0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5], [1, 1, 1, 1, 1, 1, 1, 1]]}'
+
+{"Content-Type":"application/json","pred":[2.6185295581817627,1.7686777114868164],"success":true}
+
+```
+
 JSONが返ってくれば成功。
 
 コンテナに入って何かしたい場合、
@@ -27,3 +34,6 @@ $ docker exec -it flask /bin/ash
 ```
 
 で入れる。
+
+# App Runnerへのデプロイ
+(Todo)
