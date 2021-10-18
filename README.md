@@ -1,29 +1,21 @@
-# python3-flask-docker-sample
+# Apprunner-Flask-XGBoost
 
-Python3 × Flask × Dockerのサンプル。
+Python3 × Flask × Docker x XGBoost推論のサンプル。
 
-## セットアップ
-
-```
-$ docker-compese build
-```
-
-## 動作確認
+## セットアップ・動作確認
 
 ```
 $ docker-compese up -d
 ```
 
-[localhost:5000](http://localhost:5000/) にアクセスして「Hello World!」と返ってくれば成功。
+[localhost:5000](http://localhost:5000/) にアクセスして「XGBoost prediction API with App Runner and flask.」と返ってくれば成功。
 
 もしくは
 
 ```
-$ curl http://localhost:5000/api/v1/hello
+$ curl http://localhost:5000/api/v1/predict -X POST -H 'Content-Type:application/json' -d '{"feature":[1, 1, 1, 1, 1, 1, 1, 1]}'
 
-{
-  "message": "Hello World!"
-}
+{"Content-Type":"application/json","pred":[1.7686777114868164],"success":true}
 ```
 
 JSONが返ってくれば成功。
