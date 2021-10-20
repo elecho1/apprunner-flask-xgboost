@@ -5,7 +5,7 @@ Python3 × Flask × Docker x XGBoost推論のサンプル。
 ## セットアップ・動作確認
 
 ```
-$ docker-compese up -d
+$ docker-compose -f docker/docker-compose.yml up -d
 ```
 
 [localhost:5000](http://localhost:5000/) にアクセスして「XGBoost prediction API with App Runner and flask.」と返ってくれば成功。
