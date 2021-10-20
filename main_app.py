@@ -24,10 +24,6 @@ def index():
 
 @app.route("/api/v1/predict", methods=["POST"])
 def predict():
-    """
-    こちらのサイトを参考にしています。https://qiita.com/fam_taro/items/1464c42324f15d7b8223
-    """
-
     response = {
         "success": False,
         "Content-Type": "application/json"

@@ -37,3 +37,10 @@ $ docker exec -it flask /bin/ash
 
 # App Runnerへのデプロイ
 (Todo)
+
+
+
+## 参考リンク
+* docker関連ファイルをサブディレクトリに配置する: https://qiita.com/mogya/items/73d2dae6c429926bf731
+* Python(Flask) でサクッと 機械学習 API を作る: https://qiita.com/fam_taro/items/1464c42324f15d7b8223
+* 
