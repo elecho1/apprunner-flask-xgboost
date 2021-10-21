@@ -6,6 +6,7 @@ import xgboost as xgb
 app = Flask(__name__)
 MODEL_PATH = "./artifact/xgboost_model.pickle"
 
+# この部分で、pickle形式のモデルの読み込みを行う
 def load_artifact(filename):
     artifact = None
     with open(filename, mode='rb') as fp:
@@ -16,12 +17,12 @@ def load_artifact(filename):
 
 model = load_artifact(MODEL_PATH)
 
-
+# "http://<ドメイン名>"へアクセスしたときのブラウザ表示
 @app.route("/")
 def index():
     return "XGBoost prediction API with App Runner and flask."
 
-
+# "http://<ドメイン名>/api/v1/predict"へAPI呼び出しを行う際の動作
 @app.route("/api/v1/predict", methods=["POST"])
 def predict():
     response = {
@@ -30,9 +31,9 @@ def predict():
     }
 
     if request.get_json().get("feature"):
-        feature = request.get_json().get("feature")
+        feature = request.get_json().get("feature") # リクエストからfeature読み込み
         
-        response["pred"] = model_predict(feature)
+        response["pred"] = model_predict(feature) # model_predict関数を使ってモデル予測
         response["success"] = True
 
     return jsonify(response)
@@ -41,12 +42,13 @@ def predict():
 def model_predict(feature):
     global model
     feature = np.array(feature)
-    if len(feature) != 2:
+    app.logger.debug(feature.shape)  # HTTPリクエストのfeatureのnp.ndarrayに変換
+    if len(feature.shape) != 2:  # もしデータが1つ（=1次元）であった場合
         feature = feature.reshape((1, -1))
         
-    dfeature = xgb.DMatrix(feature)
-    pred = model.predict(dfeature)
-    pred_list = pred.tolist()
+    dfeature = xgb.DMatrix(feature)  # XGBoostのデータ形式に変換 
+    pred = model.predict(dfeature)  # モデルの予測
+    pred_list = pred.tolist()  # 予測結果をpythonのlistに変換
 
     return pred_list
 
