@@ -46,8 +46,9 @@ def model_predict(feature):
     if len(feature.shape) != 2:  # もしデータが1つ（=1次元）であった場合
         feature = feature.reshape((1, -1))
         
-    dfeature = xgb.DMatrix(feature)  # XGBoostのデータ形式に変換 
-    pred = model.predict(dfeature)  # モデルの予測
+    #dfeature = xgb.DMatrix(feature)  # XGBoostのデータ形式に変換 
+    #pred = model.predict(dfeature)  # モデルの予測
+    pred = model.predict(feature)  # モデルの予測
     pred_list = pred.tolist()  # 予測結果をpythonのlistに変換
 
     return pred_list
