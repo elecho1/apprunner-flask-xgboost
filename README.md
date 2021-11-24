@@ -37,7 +37,8 @@ $ curl <App RunnerのデフォルトドメインURL>/api/v1/predict -X POST -H '
 ## ローカルでのセットアップ・動作確認
 * コンテナをビルド・起動します。
   ```
-  $ docker-compose -f docker/docker-compose.yml up -d
+  $ docker-compose -f docker/docker-compose.yml up
+  // -dオプションをつけると、daemonモードで起動します。
   ```
 * コンテナが起動しているか確認します。
   [localhost:5000](http://localhost:5000/) にアクセスして「XGBoost prediction API with App Runner and flask.」と返ってくれば成功です。
